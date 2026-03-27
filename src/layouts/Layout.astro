@@ -34,6 +34,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:locale" content="es_ES" />
     <meta property="og:site_name" content="Mi Portfolio" />
     <title>{title}</title>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-Z800P9QGGT"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z800P9QGGT');
+    </script>
   </head>
   <body class="min-h-screen bg-to text-accent-50">
     <Navbar />
