@@ -1,0 +1,62 @@
+---
+import ProjectCase from "../../components/ProjectCase.astro";
+import Layout from "../../layouts/Layout.astro";
+import workflow from "../../assets/portfolio/workflow-pedidos.png";
+---
+
+<Layout
+  title="Gestión de pedidos para fábrica de carrocerías"
+  description="Caso de estudio: Sistema de gestión de pedidos para una empresa del rubro metalmecánico"
+>
+  <main
+    class="relative flex flex-col max-w-6xl mx-auto w-full px-8 md:px-10 lg:px-8 py-12"
+  >
+    <ProjectCase
+      title="Gestión de pedidos para fábrica de carrocerías"
+      subtitle="Empresa del rubro metalmecánico"
+      demos={[
+        {
+          type: "video",
+          src: "-4pUsh2UAoA",
+          alt: "Formulario de pedido",
+          caption: "Carga completa del pedido desde un solo lugar",
+        },
+        {
+          type: "image",
+          src: workflow,
+          alt: "Flujo de trabajo",
+          caption: "Flujo de trabajo optimizado y centralizado",
+        },
+      ]}
+      problem={`La empresa comenzó a tener errores en producción debido a información incompleta o mal transmitida entre áreas.
+      Esto generaba retrabajos, pérdida de tiempo y problemas en la entrega final.`}
+      solution={`Se desarrolló un sistema que centraliza toda la información del pedido y la conecta directamente con el proceso de producción.
+      Desde un solo lugar se cargan los datos y se generan automáticamente las órdenes de trabajo.
+
+      La información se ingresa una sola vez y se reutiliza en todo el flujo.`}
+      features={[
+        "🗂️ Formulario completo de pedidos (camión, carrocería, trabajos en chasis)",
+        "👨🏻‍💼 Registro de clientes con validaciones, manteniendo la homogeneidad de los datos",
+        "📝 Generación automática de órdenes de trabajo",
+        `🚦 Sistema de estados para seguimiento del proceso:
+        Nuevo → Producción → Pintura → Montaje → Finalizado`,
+      ]}
+      details={[
+        "Validación de CUIT",
+        "Normalización de direcciones",
+        "Configuración flexible de opciones (colores, carrozados, trabajos, etc.)",
+      ]}
+      results={[
+        "Eliminación de errores por carga manual",
+        "Reducción de retrabajos en producción",
+        "Información centralizada y confiable",
+        "Mejor control del estado de cada pedido",
+      ]}
+      type={{
+        label: "Sistema a medida + automatización",
+        href: "/services/development",
+      }}
+      ctaText="¿Tienes un proceso similar?"
+    />
+  </main>
+</Layout>

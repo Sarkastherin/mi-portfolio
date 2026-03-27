@@ -1,0 +1,16 @@
+---
+import { Icon } from "astro-icon/components";
+const { label, href, className, size= 'text-md' } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`font-semibold hover:underline hover:text-accent-400 text-primary-400 float-end ${className} ${size}`}
+  >{label}
+  <Icon
+    name="lucide:arrow-right"
+    width={size === 'text-sm' ? '16' : '20'}
+    height={size === 'text-sm' ? '16' : '20'}
+    class="inline-block ml-1"
+  />
+</a>

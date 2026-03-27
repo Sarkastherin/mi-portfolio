@@ -1,0 +1,88 @@
+---
+import Subtitle from "../Generals/Subtitle.astro";
+import Image from "astro/components/Image.astro";
+const sheetId = import.meta.env.PUBLIC_SHEET_ID;
+const apiKey = import.meta.env.PUBLIC_GOOGLE_API_KEY;
+const range = "Testimonios!A1:G";
+const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+let fetchError = false;
+let rows: Testimonial[] = [];
+let header: string[] = [];
+type Testimonial = {
+  nombre_completo: string;
+  cargo_actual: string;
+  testimonio: string;
+  testimonio_abreviado: string;
+};
+
+const getAvatarUrl = (name: string, index: number) => {
+  const bgColors = ["ff2e35", "6a5ba7", "aa0a0f", "8c85cf"];
+  const bgColor = bgColors[index % bgColors.length];
+  return `https://ui-avatars.com/api/?name=${encodeURIComponent(
+    name,
+  )}&background=${bgColor}&color=fff&bold=true&size=72`;
+};
+
+try {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Network response was not ok");
+  const data = await res.json();
+  const values = Array.isArray(data.values) ? data.values : [];
+  if (values.length > 0) {
+    header = values[0].map((col: string) =>
+      col.toLocaleLowerCase().replace(/\s+/g, "_"),
+    );
+    rows = values.slice(1).map((row: string[]) => {
+      const testimonial: Record<string, string> = {};
+      header.forEach((col, index) => {
+        testimonial[col] = row[index] ?? "";
+      });
+      return testimonial as Testimonial;
+    });
+  }
+} catch (e) {
+  fetchError = true;
+}
+---
+
+<section class="pt-26" id="testimonies">
+  <Subtitle label="Testimonios" />
+  {fetchError ? (
+    <div class="p-6 text-center text-red-400 bg-primary-900/30 border border-primary-800 rounded-2xl shadow-lg mb-8">
+      No se pudieron cargar los testimonios en este momento. Por favor, inténtalo más tarde.
+    </div>
+  ) : (
+    <div
+      class="grid mb-8 bg-primary-900/30 border border-primary-800 rounded-2xl shadow-lg md:mb-12 md:grid-cols-2"
+    >
+      {
+        rows.map((testimonial, index) => (
+          <figure
+            class={`flex flex-col items-center justify-between pt-8 px-8 pb-6 text-center border-b border-primary-900 last:border-b-0 ${index % 2 === 0 ? "md:border-r" : ""}`}
+          >
+            <blockquote class="max-w-2xl mx-auto mb-4 text-primary-200 lg:mb-8">
+              <p class="">{testimonial.testimonio_abreviado}</p>
+            </blockquote>
+            <figcaption class="flex items-center self-start">
+              <Image
+                class="rounded-full w-9 h-9"
+                src={getAvatarUrl(testimonial.nombre_completo, index)}
+                alt="profile - avatar"
+                width={36}
+                height={36}
+              />
+              <div class="space-y-0.5 text-left rtl:text-right ms-2">
+                <div class="text-sm text-heading font-medium mb-0.5">
+                  {testimonial.nombre_completo}
+                </div>
+                <div class="text-sm text-primary-300">
+                  {testimonial.cargo_actual}
+                </div>
+              </div>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  )}
+</section>

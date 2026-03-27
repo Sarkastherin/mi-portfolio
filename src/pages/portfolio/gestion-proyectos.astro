@@ -1,0 +1,60 @@
+---
+import ProjectCase from "../../components/ProjectCase.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="App de Cotizaciones y Oportunidades"
+  description="Caso de estudio: App de Cotizaciones y Oportunidades"
+>
+  <main
+    class="relative flex flex-col max-w-6xl mx-auto w-full px-8 md:px-10 lg:px-8 py-12"
+  >
+    <ProjectCase
+      title="App de Cotizaciones y Oportunidades"
+      subtitle="Empresa del rubro de mantenimiento y construcción"
+      demos={[]}
+      problem={`La gestión de pagos se realizaba de forma manual, sin un sistema claro para saber quién había pagado y quién no.
+
+      Esto generaba:
+      - Tiempo perdido revisando transferencias  
+      - Dificultad para llevar el control mensual  
+      - Falta de claridad sobre ingresos y deudas  
+      - Riesgo de errores u olvidos  
+
+      👉 El problema no era cobrar, sino tener control y visibilidad de la información.`}
+      solution={`Se implementó un sistema simple y automatizado con herramientas de Google que permite registrar alumnas, pagos y visualizar el estado de cada una en tiempo real.
+
+      Toda la información se centraliza en un solo lugar y el proceso de registro se vuelve automático mediante formularios.
+
+      👉 Permite gestionar pagos de forma ordenada sin necesidad de sistemas complejos.`}
+      features={[
+        "Formulario de registro de alumnas",
+        "Formulario para registrar pagos realizados",
+        "Registro automático de datos en Google Sheets",
+        "Sistema de estados: Pendiente, Validado, Rechazado",
+        "Dashboard con resumen mensual de pagos",
+        "Identificación visual de alumnas con pagos pendientes",
+      ]}
+      details={[
+        "Implementado con herramientas de Google (sin costos de licencias)",
+        "Centralización de datos en una única hoja de cálculo",
+        "Automatización del registro de pagos",
+        "Diseñado para uso simple e intuitivo",
+        "Notificaciones automáticas por email al recibir pagos",
+      ]}
+      results={[
+        "Control claro de quién pagó y quién no",
+        "Reducción del tiempo dedicado a seguimiento manual",
+        "Información centralizada y actualizada en tiempo real",
+        "Menos errores en el registro de pagos",
+        "Mayor organización en la gestión mensual",
+      ]}
+      type={{
+        label: "Automatización con Google Workspace",
+        href: "/services/automation-with-google",
+      }}
+      ctaText="¿Tienes un proceso similar?"
+    />
+  </main>
+</Layout>

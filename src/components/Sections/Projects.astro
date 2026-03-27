@@ -1,0 +1,59 @@
+---
+import Subtitle from "../Generals/Subtitle.astro";
+import Image from "astro/components/Image.astro";
+import project1 from "../../assets/portfolio/cover-gestion-pedidos.png";
+import project2 from "../../assets/portfolio/miniatura-solicitud-piezas.png";
+import Link from "../Generals/Link.astro";
+const works = [
+  {
+    title: "Sistema de gestión de pedidos para fábrica de carrocerías.",
+    description: `Sistema a medida que centraliza y automatiza la gestión de pedidos, eliminando errores y mejorando el control en fábrica de carrocerías.`,
+    href: "portfolio/gestion-pedidos",
+    alt: "Sistema de gestión de pedidos para fábrica de carrocerías.",
+    url_image: project1,
+    tags: "Desarrollo Web",
+  },
+  {
+    href: "portfolio/pedidos-tecnicos",
+    alt: "Sistema de Pedidos Técnicos para Planta de Producción",
+    title: "Sistema de Pedidos Técnicos para Planta de Producción",
+    description:
+      "Conectando Producción, Ingeniería y Planificación con una solución accesible y automatizada para la solicitud de piezas.",
+    url_image: project2,
+    tags: "Automatización",
+  },
+];
+---
+
+<section class="pt-26" id="portfolio">
+  <Subtitle label="Portfolio" />
+  <div class="flex flex-col space-y-10">
+    {
+      works.map((work) => (
+        <div class="flex flex-col md:flex-row border border-primary-800 bg-primary-900/30 rounded-2xl shadow-lg">
+          <div class="flex-1 overflow-hidden rounded-t-2xl md:rounded-t-0 md:rounded-l-2xl md:rounded-t-none">
+            <Image
+              src={work.url_image}
+              alt={work.alt}
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="flex flex-col justify-between flex-1 lg:flex-2 p-4 lg:p-5 pt-6 lg:pt-8">
+            <div>
+              <h4 class="text-lg lg:text-xl font-semibold text-primary-300 mb-2 md:mb-4">
+                {work.title}
+              </h4>
+              <p class="text-base lg:text-lg">{work.description}</p>
+            </div>
+            <Link
+              label="Conocer más"
+              href={work.href}
+              size="text-sm lg:text-base"
+              className="self-end"
+            />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

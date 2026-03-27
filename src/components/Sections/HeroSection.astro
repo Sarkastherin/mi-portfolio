@@ -1,0 +1,72 @@
+---
+import Image from "astro/components/Image.astro";
+import aboutMePicture from "../../assets/about-me-picture.jpg";
+import Buttons from "../Generals/Buttons.astro";
+---
+
+<section
+  class="relative flex flex-col items-center justify-center space-y-6 bg-linear-to-b from-primary-900 to-primary-950 overflow-hidden rounded-2xl py-10 px-8"
+>
+  <div class="top-wave z-0" aria-hidden="true">
+    <!-- SVG responsivo: cambia el atributo 'd' para ajustar forma de la ola -->
+    <svg
+      viewBox="0 0 1440 320"
+      preserveAspectRatio="none"
+      class="w-full h-full"
+    >
+      <!-- Path de ejemplo: curvado suave. Relleno blanco para emular la tarjeta estilo business card -->
+      <path
+        fill="var(--color-accent-500)"
+        d="M0,96L60,122.7C120,149,240,203,360,213.3C480,224,600,192,720,176C840,160,960,160,1080,154.7C1200,149,1320,139,1380,133.3L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+      ></path>
+    </svg>
+  </div>
+  <div
+    class="flex flex-col lg:flex-row items-center justify-evenly w-full space-y-4 z-10"
+  >
+    <div
+      class="w-38 h-38 lg:w-50 lg:h-50 rounded-full border-8 border-white shadow-2xl overflow-hidden"
+    >
+      <Image
+        src={aboutMePicture}
+        alt="Kathe Guerrero"
+        loading="eager"
+        fetchpriority="high"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    <div class="text-center lg:text-right space-y-4">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+        Kathe
+        <br />
+        Guerrero
+      </h1>
+      <p class="text-xl lg:text-2xl opacity-90 font-bold">
+        <span class="bg-accent-500 rounded-full px-4 py-1 text-white"
+          >Desarrolladora Web</span
+        >
+      </p>
+    </div>
+  </div>
+  <p class="text-lg lg:text-xl max-w-lg text-center text-primary-200">
+    Creo soluciones digitales que automatizan tareas, mejoran procesos y hacen
+    que tu negocio fluya mejor.
+  </p>
+  <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+    <Buttons label="Ver servicios" href="/" variant="primary" />
+    <Buttons label="Contáctame" href="#contact" variant="light" />
+  </div>
+</section>
+<style>
+  .top-wave {
+    position: absolute;
+    top: -4%;
+    left: 0;
+    width: 100%;
+    height: 160px; /* cambia la altura para hacer la ola más/menos pronunciada */
+    overflow: visible;
+    filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.28));
+    z-index: 0;
+    pointer-events: none;
+  }
+</style>

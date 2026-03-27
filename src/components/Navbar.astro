@@ -1,0 +1,20 @@
+---
+import Image from "astro/components/Image.astro"
+import logo from "../assets/logo.png"
+---
+<header class="text-primary-50 py-2 shadow-lg fixed w-full z-50 bg-primary-900/30 backdrop-blur-sm border-b border-primary-800">
+  <div class="flex justify-between items-center max-w-6xl mx-auto w-full px-6 lg:px-8">
+    <a href="/" class="flex items-center gap-2 ">
+      <Image src={logo} alt="Logo" class="w-15" loading="eager" />
+    </a>
+    <nav>
+      <ul class="flex justify-center items-center font-bold space-x-4">
+        <li><a href="/" class="hover:text-accent-400">Inicio</a></li>
+        <li><a href="/#about" class="hover:text-accent-400">Acerca de</a></li>
+        <li><a href="/#services" class="hover:text-accent-400">Servicios</a></li>
+        <li><a href="/#portfolio" class="hover:text-accent-400">Portfolio</a></li>
+        <li><a href="/#contact" class="hover:text-accent-400">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

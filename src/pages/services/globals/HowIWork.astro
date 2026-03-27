@@ -1,0 +1,91 @@
+---
+interface PipelineStep {
+  title: string;
+  description: string;
+  icon: string;
+}
+const { pipelines } = Astro.props as { pipelines: PipelineStep[] };
+---
+<section class="mt-16">
+  <h2
+    class="text-xl md:text-2xl lg:text-3xl font-bold mb-10 text-primary-300 text-center"
+  >
+    ¿Cómo es el flujo de trabajo?
+  </h2>
+  <div class="relative">
+    <button
+      type="button"
+      class="pipeline-arrow-left absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-primary-900/70 hover:bg-primary-800/90 border border-primary-700 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition"
+      aria-label="Ver anterior"
+    >
+      <svg
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg
+      >
+    </button>
+    <button
+      type="button"
+      class="pipeline-arrow-right absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-primary-900/70 hover:bg-primary-800/90 border border-primary-700 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition"
+      aria-label="Ver siguiente"
+    >
+      <svg
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg
+      >
+    </button>
+    <div id="pipeline-scroll" class="overflow-x-auto hide-scrollbar mx-15">
+      <script is:inline>
+        // Oculta la barra de scroll horizontal visualmente
+        const style = document.createElement("style");
+        style.innerHTML = `.hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; } .hide-scrollbar::-webkit-scrollbar { display: none; }`;
+        document.head.appendChild(style);
+
+        // Scroll con flechas
+        window.addEventListener("DOMContentLoaded", () => {
+          const leftBtn = document.querySelector(".pipeline-arrow-left");
+          const rightBtn = document.querySelector(".pipeline-arrow-right");
+          const scrollEl = document.getElementById("pipeline-scroll");
+          if (leftBtn && rightBtn && scrollEl) {
+            leftBtn.addEventListener("click", () => {
+              scrollEl.scrollBy({ left: -300, behavior: "smooth" });
+            });
+            rightBtn.addEventListener("click", () => {
+              scrollEl.scrollBy({ left: 300, behavior: "smooth" });
+            });
+          }
+        });
+      </script>
+      <div class="flex gap-8 min-w-225">
+        {
+          pipelines.map((step, idx) => (
+            <div class="flex flex-col items-center flex-1 min-w-45 relative">
+              <div class="flex items-center justify-center w-16 h-16 rounded-full bg-accent-500/20 border-2 border-accent-400 text-3xl mb-2 z-10">
+                {step.icon}
+              </div>
+              <h3 class="text-base font-bold text-primary-300 text-center mb-1 mt-2">
+                {step.title}
+              </h3>
+              <p class="text-xs text-primary-200 text-center mb-2">
+                {step.description}
+              </p>
+              {/* Conector visual excepto en el último */}
+              {idx < pipelines.length - 1 && (
+                <div class="absolute top-8 -right-8 w-16 h-1 bg-accent-400 z-0 hidden md:block" />
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

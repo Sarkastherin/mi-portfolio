@@ -1,0 +1,22 @@
+---
+interface ButtonProps {
+  label: string;
+  variant?: "primary" | "light";
+  href: string;
+}
+const variants = {
+  primary: "bg-accent-500 text-white",
+  light: "bg-white text-accent-500",
+};
+const {
+  label,
+  variant = "primary",
+  href,
+} = Astro.props as ButtonProps;
+---
+
+<a
+  href={href}
+  class={`inline-block ${variants[variant]} px-4 py-2 md:px-6 md:py-3 rounded-full md:text-lg text-md text-center font-semibold transition-transform transform hover:scale-105`}
+  >{label}</a
+>

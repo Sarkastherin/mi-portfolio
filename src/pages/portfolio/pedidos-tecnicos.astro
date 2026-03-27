@@ -1,0 +1,81 @@
+---
+import ProjectCase from "../../components/ProjectCase.astro";
+import Layout from "../../layouts/Layout.astro";
+import process from "../../assets/portfolio/solicitud-piezas.png";
+---
+
+<Layout
+  title="Sistema de pedidos técnicos para planta de producción"
+  description="Caso de estudio: Sistema de pedidos técnicos para planta de producción"
+>
+  <main
+    class="relative flex flex-col max-w-6xl mx-auto w-full px-8 md:px-10 lg:px-8 py-12"
+  >
+    <ProjectCase
+      title="Sistema de pedidos técnicos para planta de producción"
+      subtitle="Planta industrial con procesos de corte y plegado"
+      demos={[
+        {
+          type: "video",
+          src: "Y6YgZgWm9xg",
+          alt: "Formulario de solicitud de piezas",
+          caption: "Selección guiada de piezas desde un listado actualizado",
+        },
+        {
+          type: "image",
+          src: process,
+          alt: "Flujo de solicitud de piezas",
+          caption: "Flujo de solicitud de piezas conectado entre áreas",
+        },
+        {
+          type: "iframe",
+          src: "https://lookerstudio.google.com/embed/reporting/db3f59e4-e16d-4118-91ba-7bc93eb92f95/page/02dRF",
+          alt: "Visualizador de piezas",
+          caption: "Búsqueda de piezas para evitar errores en la solicitud",
+        },
+      ]}
+      problem={`La planta tenía dificultades para gestionar correctamente los pedidos técnicos de piezas.
+
+      Los operarios completaban solicitudes con información incompleta o ambigua, lo que generaba:
+      - Errores en la interpretación de las piezas
+      - Retrasos entre áreas
+      - Pérdida de tiempo en validaciones y correcciones
+
+      Además, no existía una fuente única de información, por lo que cada sector trabajaba con datos distintos.
+
+      👉 El problema no era la producción en sí, sino la falta de un sistema claro para solicitar y validar piezas.`}
+      solution={`Se implementó un sistema basado en herramientas de Google que centraliza la información y guía al usuario en la carga correcta de pedidos.
+
+      El proceso permite seleccionar piezas desde un listado actualizado, validar la información automáticamente y conectar a todos los sectores involucrados mediante notificaciones.
+
+      👉 La información se estandariza desde el origen y fluye correctamente entre Producción, Planificación e Ingeniería.`}
+      features={[
+        "🗃️ Registro centralizado de piezas actualizado en tiempo real",
+        "📝 Formulario guiado para seleccionar piezas correctas",
+        "📧 Envío automático de pedidos a los responsables",
+        "📡 Conexión entre Producción, Planificación e Ingeniería",
+        "🔍 Visualización de piezas con buscador para evitar errores",
+        "",
+      ]}
+      details={[
+        "Implementado completamente con herramientas de Google (sin costos de licencias)",
+        "Google Sheets como base de datos centralizada",
+        "Google Apps Script para lógica y automatización",
+        "Google Sites como interfaz de acceso",
+        "Looker Studio para visualización y búsqueda de piezas",
+      ]}
+      results={[
+        "Reducción de errores en pedidos técnicos",
+        "Menor tiempo de validación entre áreas",
+        "Información clara y estandarizada desde el inicio",
+        "Mejor comunicación entre sectores",
+        "Flujo de solicitudes más ágil y controlado",
+      ]}
+      type={{
+        label: "Automatización con Google Workspace",
+        href: "/services/automation-with-google",
+      }}
+      ctaText="¿Tienes un proceso similar?"
+    />
+  </main>
+</Layout>

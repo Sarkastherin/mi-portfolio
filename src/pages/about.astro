@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Image from "astro/components/Image.astro";
+import programmer from "../assets/programmer.jpg";
+import Subtitle from "../components/Generals/Subtitle.astro";
+const experiences = [
+  {
+    timeline: { from: "Mayo 2025", to: "Actualidad" },
+    position: "🧰 Desarrolladora Web Freelance",
+    description:
+      "Desarrollo de apps personalizadas, automatizaciones, dashboards y consultoría en digitalización de procesos.",
+  },
+  {
+    timeline: { from: "Septiembre 2021", to: "Mayo 2025" },
+    position: "💼 Analísta de Calidad y Sistemas",
+    description:
+      "Mantenimiento y mejora del Sistema de Gestión de Calidad ISO 9001. </br> Automatización de procesos internos con <strong>Google Apps Script</strong> y <strong>Google Sheets</strong>, desarrollo de herramientas para la gestión eficiente de tareas y seguimiento de proyectos.",
+  },
+  {
+    timeline: { from: "Abril 2011", to: "Diciembre 2018" },
+    position: "🏗️ Proyectos de Ingeniería",
+    description:
+      "Inspección en proyectos de infraestructura, desarrollo de computos para licitaciones, dibujante proyectista y planificadora de proyectos.",
+  },
+  {
+    timeline: { from: "Octubre 2007", to: "Diciembre 2011" },
+    position: "🎓 Carrera Universitaria en TSU Construcción Civil",
+    description:
+      "Obtención del título de <strong>Técnico Superior Universitario en Construcción Civil</strong>, <em>Equivalente a tecnicatura terciaria/universitaria de 3 años, con orientación en planificación y ejecución de obras civiles (estructuras, planos, costos, supervisión).</em>",
+  },
+];
+---
+
+<Layout title="Sobre mí" description="un poco de información sobre mí">
+  <main
+    class="relative flex flex-col max-w-6xl mx-auto w-full px-8 md:px-10 lg:px-8 py-12 space-y-12"
+  >
+    <h1
+      class="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 text-accent-400"
+    >
+      Sobre mí
+    </h1>
+    <p class="text-lg md:text-lg lg:text-xl">
+      Soy <span class="font-semibold text-accent-300">Katherin Guerrero</span>,
+      desarrolladora web con enfoque en <span
+        class="font-semibold text-accent-300">procesos y automatización</span
+      >.
+      <br />
+      Trabajo ayudando a personas y empresas a <span class="font-semibold"
+        >ordenar, simplificar y mejorar</span
+      > su forma de trabajar usando tecnología.
+    </p>
+    <div class="flex lg:flex-row flex-col items-center lg:items-start gap-8">
+      <div class="flex-1">
+        <Image
+          src={programmer}
+          alt="Kathe Guerrero"
+          class="w-xl lg:w-full h-auto rounded-2xl shadow-lg"
+          loading="eager"
+        />
+      </div>
+      <div
+        class="flex-1 text-lg md:text-lg lg:text-xl text-primary-200 space-y-6"
+      >
+        <p>
+          No solo desarrollo herramientas: <span
+            class="font-semibold text-accent-300"
+            >entiendo cómo funciona tu negocio</span
+          >.
+          <br />
+          Durante años trabajé gestionando procesos bajo estándares como <span
+            class="font-semibold">ISO 9001</span
+          >, lo que me permite diseñar soluciones que realmente encajan en la
+          operación.
+        </p>
+
+        <p>
+          Hoy combino esa experiencia con desarrollo y automatización para crear
+          sistemas que
+          <span class="font-semibold text-accent-300"
+            >reducen errores, ahorran tiempo y hacen todo más claro</span
+          >.
+        </p>
+        <!-- <p>
+          Soy <span class="font-semibold text-accent-300"
+            >Katherin Guerrero</span
+          >, <span class="font-semibold text-accent-300"
+            >desarrolladora web</span
+          > y <span class="font-semibold text-accent-300"
+            >analista de procesos</span
+          >.
+          <br />
+          <span class="font-semibold">Creo en la tecnología como aliada</span> para
+          hacernos la vida más liviana y eficiente.
+        </p>
+        <p>
+          Cuento con <span class="font-semibold text-accent-300"
+            >más de 15 años de experiencia</span
+          > en áreas técnicas y administrativas, desde <span
+            class="font-semibold">proyectos de ingeniería</span
+          > hasta <span class="font-semibold"
+            >automatización de tareas repetitivas</span
+          >.
+          <br />
+          Hoy mi propósito es <span class="font-semibold text-accent-300"
+            >ayudar a personas y empresas a trabajar mejor</span
+          > con <span class="font-semibold">soluciones digitales a medida</span
+          >.
+        </p> -->
+      </div>
+    </div>
+    <div
+      class="mt-10 p-6 rounded-2xl border border-primary-800 bg-primary-900/30"
+    >
+      <h3 class="text-lg font-bold text-primary-300 mb-2">Mi enfoque</h3>
+      <p class="text-primary-200">
+        Mi enfoque no es solo técnico. Trabajo entendiendo procesos reales,
+        detectando problemas y proponiendo soluciones sostenibles.
+        <br /><br />
+        No se trata solo de “hacer un sistema”, sino de crear algo que realmente funcione
+        en tu día a día.
+      </p>
+    </div>
+    <Subtitle label="Trayectoria Profesional" />
+    <ol
+      aria-label="Línea de tiempo con mi experiencia laboral"
+      class="relative space-y-8 before:absolute before:top-0 before:left-4 md:before:left-1/2 before:h-full before:w-0.5 before:rounded-full before:bg-primary-400"
+    >
+      {
+        experiences.map((e) => (
+          <li class="group relative grid grid-cols-1 md:grid-cols-2 md:odd:-me-3 md:even:-ms-3">
+            <div class="relative flex items-start gap-4 md:group-odd:flex-row-reverse md:group-odd:text-right md:group-even:order-last">
+              <span class="size-3 shrink-0 rounded-full bg-accent-400" />
+              <div class="-mt-2">
+                <time class="text-xs/none font-medium text-primary-400">
+                  {e.timeline.from} – {e.timeline.to}
+                </time>
+                <h3 class="text-lg font-bold text-primary-200">{e.position}</h3>
+                <p
+                  class="mt-0.5 text-sm text-primary-100"
+                  set:html={e.description}
+                />
+              </div>
+            </div>
+            <div aria-hidden="true" class="hidden md:block" />
+          </li>
+        ))
+      }
+    </ol>
+    <div class="mt-16 text-center">
+      <h3 class="text-xl font-bold text-primary-300 mb-4">
+        ¿Quieres mejorar la forma en que trabajas?
+      </h3>
+
+      <p class="text-gray-400 mb-6 max-w-xl mx-auto">
+        Cuéntame cómo manejas tus procesos hoy y te digo qué se puede optimizar,
+        automatizar o mejorar.
+      </p>
+
+      <a
+        href="https://wa.me/5493435263931"
+        target="_blank"
+        class="inline-flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-accent-400"
+      >
+        Hablar conmigo
+      </a>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,123 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import WhatIDo from "./globals/WhatIDo.astro";
+import HowIWork from "./globals/HowIWork.astro";
+import CTA from "./globals/CTA.astro";
+import cover1 from "../../assets/services/cover-development.jpg";
+import cover2 from "../../assets/services/cover-apis.png";
+import cover3 from "../../assets/services/cover-process.png";
+import type { ImageMetadata } from "astro";
+const whatIDo: {
+  title: string;
+  description: string;
+  enum: string[];
+  icon: string;
+  note: string;
+  img: { metaData: ImageMetadata; loading: "eager" | "lazy" };
+}[] = [
+  {
+    title: "Aplicaciones a medida (de inicio a fin)",
+    description: "Desarrollo sistemas completos listos para usar:",
+    enum: [
+      "Paneles de gestión claros e intuitivos",
+      "Bases de datos organizadas (tu información, bien ordenada)",
+      "Accesos seguros para cada usuario",
+      "Funciona desde cualquier lugar (todo en la nube)",
+    ],
+    icon: "💻",
+    note: "En simple: pasas de “todo desordenado” a “todo bajo control”",
+    img: { metaData: cover1, loading: "eager" },
+  },
+  {
+    title: "Integraciones con otros sistemas",
+    description: "Hago que tus herramientas se conecten entre sí:",
+    enum: [
+      "APIs externas (ej: datos oficiales, validaciones, etc.)",
+      "Sistemas que ya usas (ej: CRMs, ERPs, etc.)",
+      "Automatización de consultas repetitivas",
+    ],
+    icon: "📡",
+    note: "Resultado: menos copiar/pegar, menos errores, más tiempo libre",
+    img: { metaData: cover2, loading: "lazy" },
+  },
+  {
+    title: "Automatización de procesos",
+    description: "Analizo cómo funciona tu negocio y automatizo tareas clave:",
+    enum: [
+      "Cálculos automáticos (ej: precios, costos, etc.)",
+      "Reutilización de información (no cargas lo mismo 10 veces)",
+      "Procesos que se ejecutan solos (ej: reportes, alertas, etc.)",
+    ],
+    icon: "⚙️",
+    note: "Resultado: trabajas menos en lo operativo y más en lo importante",
+    img: { metaData: cover3, loading: "lazy" },
+  },
+];
+const pipelines = [
+  {
+    title: "Entiendo tu negocio",
+    description:
+      "Analizo cómo funciona tu negocio, tus procesos actuales y tus necesidades específicas para diseñar la mejor solución digital a medida.",
+    icon: "🔍",
+  },
+  {
+    title: "Diseño de la solución ideal para ti",
+    description:
+      "Creo un plan detallado de la solución digital que mejor se adapte a tus necesidades.",
+    icon: "📝",
+  },
+  {
+    title: "Desarrollo de la aplicación a medida",
+    description:
+      "Construyo la aplicación siguiendo las mejores prácticas y asegurando su funcionalidad.",
+    icon: "💻",
+  },
+  {
+    title: "Pruebas y ajustes",
+    description:
+      "Realizo pruebas exhaustivas y ajustes necesarios para garantizar un producto final de alta calidad.",
+    icon: "🔧",
+  },
+  {
+    title: "Capacitación",
+    description:
+      "Te enseño a utilizar la aplicación de manera eficiente para que aproveches al máximo sus funcionalidades.",
+    icon: "🎓",
+  },
+  {
+    title: "Soporte continuo",
+    description:
+      "Brindo soporte continuo para asegurar que tu aplicación funcione correctamente y se mantenga actualizada.",
+    icon: "🛠️",
+  },
+];
+---
+
+<Layout
+  title="Desarrollo de Aplicaciones"
+  description="Servicios de desarrollo de aplicaciones a medida"
+>
+  <main
+    class="relative flex flex-col max-w-6xl mx-auto w-full px-8 md:px-10 lg:px-8 py-12"
+  >
+    <h1
+      class="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-accent-400"
+    >
+      Desarrollo de Aplicaciones
+    </h1>
+    <p class="text-lg lg:text-xl">
+      Desarrollo interfaces intuitivas y funcionales que se adaptan a tu
+      negocio. Herramientas hechas a medida para que dejes atrás soluciones
+      genéricas
+    </p>
+    <WhatIDo whatIDo={whatIDo} />
+    <HowIWork pipelines={pipelines} />
+    <CTA
+    title="¿Esto encaja con lo que necesitas?"
+      description="Cuéntame cómo trabajas hoy y te digo exactamente qué se puede automatizar, qué conviene mejorar y cómo hacerlo."
+      accentButton={{ label: "Agendar por WhatsApp", href: "https://wa.me/5493435263931" }}
+      defaultButton={{ label: "Solicitar propuesta", href: "/contacto" }}
+      note="Te respondo con una idea clara, sin compromiso."
+    />
+  </main>
+</Layout>

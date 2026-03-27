@@ -1,0 +1,215 @@
+---
+import Image from "astro/components/Image.astro";
+const {
+  title,
+  subtitle,
+  demos = [], // demos: array de { type: 'video' | 'image', src: string, alt?: string, caption?: string }
+  problem,
+  solution,
+  features = [],
+  details = [],
+  results = [],
+  type = { label: "", href: "" },
+  ctaText,
+} = Astro.props;
+---
+
+<section class="space-y-12">
+  <!-- HERO -->
+  <div
+    class="relative overflow-hidden rounded-3xl bg-linear-to-br from-primary-950 via-primary-900 to-accent-900 p-8 md:p-12"
+  >
+    <div
+      class="absolute -top-16 -right-16 w-40 h-40 bg-accent-400/20 blur-3xl rounded-full"
+    >
+    </div>
+    <div
+      class="absolute -bottom-16 -left-16 w-40 h-40 bg-primary-400/20 blur-3xl rounded-full"
+    >
+    </div>
+
+    <div class="relative">
+      <p class="text-xs uppercase tracking-widest text-primary-200 mb-2">
+        {subtitle}
+      </p>
+      <h1 class="text-3xl md:text-5xl font-bold text-white leading-tight">
+        {title}
+      </h1>
+    </div>
+  </div>
+  <!-- DEMOS (videos o imágenes) -->
+  {
+    demos?.length > 0 && (
+      <section class="space-y-6">
+        <h2 class="text-2xl font-bold text-primary-300">🎞️ Demos</h2>
+        <div class="grid md:grid-cols-1 gap-6">
+          {demos.map((demo: any) => {
+            if (demo.type === "video") {
+              return (
+                <div class="rounded-2xl overflow-hidden border border-primary-800 bg-primary-900/30 shadow-lg aspect-video flex flex-col items-center justify-center">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${demo.src}`}
+                    title={demo.alt || "Demo video"}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    class="w-full h-full border-0"
+                  />
+                  {demo.caption && (
+                    <div class="p-4 text-sm text-primary-300">
+                      {demo.caption}
+                    </div>
+                  )}
+                </div>
+              );
+            } else if (demo.type === "image") {
+              return (
+                <div class="rounded-2xl overflow-hidden border border-primary-800 bg-primary-900/30 shadow-lg">
+                  <Image
+                    src={demo.src}
+                    alt={demo.alt}
+                    class="w-full object-cover"
+                    loading="lazy"
+                  />
+                  {demo.caption && (
+                    <div class="p-4 text-sm text-primary-300">
+                      {demo.caption}
+                    </div>
+                  )}
+                </div>
+              );
+            } else if (demo.type === "iframe") {
+              return (
+                <div class="rounded-2xl overflow-hidden border border-primary-800 bg-primary-900/30 shadow-lg aspect-video flex flex-col items-center justify-center">
+                  <iframe
+                    src={demo.src}
+                    style="border:0"
+                    allowfullscreen
+                    height="500"
+                    class="w-full h-full border-0"
+                    sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+                  />
+                  {demo.caption && (
+                    <div class="p-4 text-sm text-primary-300">
+                      {demo.caption}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+          })}
+        </div>
+      </section>
+    )
+  }
+  <!-- PROBLEM + SOLUTION -->
+  <div class="grid md:grid-cols-1 gap-8">
+    <div class="p-6 rounded-2xl border border-red-500/20 bg-red-500/5">
+      <h2 class="text-lg font-bold text-red-400 mb-3">⚠️ Problema</h2>
+      <p class="text-primary-200 whitespace-pre-line">{problem}</p>
+    </div>
+
+    <div class="p-6 rounded-2xl border border-green-500/20 bg-green-500/5">
+      <h2 class="text-lg font-bold text-green-400 mb-3">💡 Solución</h2>
+      <p class="text-primary-200 whitespace-pre-line">{solution}</p>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+
+  <section>
+    <h2 class="text-2xl font-bold text-primary-300 mb-6">⚙️ Qué incluye</h2>
+    {
+      features.length > 0 && (
+        <div class="grid bg-primary-900/30 border border-primary-800 rounded-2xl shadow-lg md:grid-cols-2">
+          {features.map((f: string, index: number) => (
+            <figure
+              class={`flex flex-col items-center justify-between pt-8 px-8 pb-6 text-center border-b ${index === features.length - 1 || index === features.length - 2 ? "border-b-0" : ""} border-primary-900 ${index % 2 === 0 ? "md:border-r" : ""}`}
+            >
+              <blockquote class="max-w-2xl mx-auto text-primary-200">
+                {f}
+              </blockquote>
+            </figure>
+          ))}
+        </div>
+      )
+    }
+  </section>
+
+  <!-- DETAILS + RESULTS -->
+  <div class="grid md:grid-cols-2 gap-8">
+    {
+      details.length > 0 && (
+        <div class="p-6 rounded-2xl border border-indigo-500/30 bg-indigo-500/10">
+          <h2 class="text-xl font-bold text-primary-300 mb-4">
+            🧠 Detalles clave
+          </h2>
+          <ul class="space-y-2 text-primary-200">
+            {details.map((d: string) => (
+              <li class="flex gap-2">
+                <span>•</span>
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    {
+      results.length > 0 && (
+        <div class="p-6 rounded-2xl border border-lime-500/30 bg-lime-500/10">
+          <h2 class="text-xl font-bold text-lime-400 mb-4">🚀 Resultado</h2>
+          <ul class="space-y-2 text-primary-100">
+            {results.map((r: string) => (
+              <li class="flex gap-2">
+                <span>✔</span>
+                <span>{r}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+
+  <!-- TYPE -->
+  {
+    type && (
+      <div class="text-center">
+        <div class="inline-flex flex-col items-center gap-3 px-6 py-4 rounded-2xl border border-primary-700 bg-primary-900/40 text-primary-200">
+          <p class="text-xs uppercase tracking-widest text-primary-400">
+            Tipo de solución
+          </p>
+
+          <p class="font-semibold">{type.label}</p>
+
+          {type.href && (
+            <a
+              href={type.href}
+              class="text-sm text-accent-400 hover:text-accent-300 underline underline-offset-4"
+            >
+              Ver cómo funciona este servicio →
+            </a>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  <!-- CTA -->
+  {
+    ctaText && (
+      <div class="relative overflow-hidden rounded-3xl bg-linear-to-br from-primary-950 via-primary-900 to-accent-800 p-8 text-center">
+        <h3 class="text-xl md:text-2xl font-bold text-white mb-4">{ctaText}</h3>
+
+        <a
+          href="https://wa.me/5493435263931"
+          target="_blank"
+          class="inline-flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-accent-400"
+        >
+          Hablar conmigo
+        </a>
+      </div>
+    )
+  }
+</section>

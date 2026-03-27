@@ -1,0 +1,95 @@
+---
+import Subtitle from "../Generals/Subtitle.astro";
+const services = [
+  {
+    title: "Desarrollo de Aplicaciones",
+    description:
+      "Interfaces intuitivas y funcionales creadas a medida. Herramientas que se adaptan a tus procesos reales y resuelven necesidades específicas.",
+    icon: "💻",
+    href: "/services/development",
+  },
+  {
+    title: "Automatización con Google Workspace",
+    description:
+      "Creo soluciones personalizadas para automatizar tareas repetitivas y mejorar la eficiencia de tu negocio utilizando Google Apps Script.",
+    icon: "⚙️",
+    href: "/services/automation-with-google",
+  },
+  {
+    title: "Gráficos y Paneles Interactivos",
+    description:
+      "Visualizá lo importante con paneles automáticos y claros. Indicadores en tiempo real y análisis de datos con Google Sheets y otras herramientas.",
+    icon: "📊",
+    href: "/services/interactive-dashboards",
+  },
+];
+---
+
+<section class="pt-26" id="services">
+  <Subtitle label="Servicios" />
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    {
+      services.map((service) => (
+        <div class="flex flex-col justify-between border border-primary-800 bg-primary-900/30 rounded-2xl p-6 shadow-lg">
+          <div>
+            <span class="text-4xl">{service.icon}</span>
+            <h3 class="text-xl text-primary-300 font-bold my-2">
+              {service.title}
+            </h3>
+            <p class="text-gray-300">{service.description}</p>
+          </div>
+          <a
+            href={service.href}
+            class="text-sm text-accent-500 bg-white hover:text-white font-bold py-1 px-4 rounded-full hover:bg-accent-600 self-baseline-last mt-5"
+          >
+            Conocer más
+          </a>
+        </div>
+      ))
+    }
+  </div>
+  <div class="mt-16">
+    <div
+      class="relative overflow-hidden rounded-2xl border border-primary-800 bg-primary-900/40 p-6 md:p-8"
+    >
+      <!-- Glow decorativo -->
+      <div
+        class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-accent-400/20 blur-2xl"
+      >
+      </div>
+      <div
+        class="pointer-events-none absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-primary-400/20 blur-2xl"
+      >
+      </div>
+
+      <div
+        class="relative flex flex-col md:flex-row items-center gap-6 md:gap-10"
+      >
+        <!-- Icono -->
+        <div class="text-4xl md:text-5xl">🔍</div>
+
+        <!-- Contenido -->
+        <div class="flex-1 text-center md:text-left">
+          <h3 class="text-lg md:text-xl font-bold text-primary-300 mb-2">
+            ¿No sabes qué necesitas aún?
+          </h3>
+
+          <p class="text-gray-400 text-sm md:text-base max-w-xl">
+            Analizo cómo trabajas hoy y te digo qué conviene automatizar,
+            mejorar o desarrollar.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div>
+          <a
+            href="/services/process-optimization"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-accent-400"
+          >
+            Analizar mi caso
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

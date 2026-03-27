@@ -1,0 +1,126 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import WhatIDo from "./globals/WhatIDo.astro";
+import HowIWork from "./globals/HowIWork.astro";
+import CTA from "./globals/CTA.astro";
+import cover1 from "../../assets/services/cover-forms.png";
+import cover2 from "../../assets/services/cover-sheets.png";
+import cover3 from "../../assets/services/cover-notificacion.png";
+import type { ImageMetadata } from "astro";
+const whatIDo: {
+  title: string;
+  description: string;
+  enum: string[];
+  icon: string;
+  note: string;
+  img: { metaData: ImageMetadata; loading: "eager" | "lazy" };
+}[] = [
+  {
+    title: "Formularios conectados a procesos reales",
+    description:
+      "Creo formularios que organizan automáticamente la información que recibes",
+    enum: [
+      "Respuestas que se guardan y ordenan solas",
+      "Datos listos para usar (sin copiar/pegar)",
+      "Base para reportes y seguimiento",
+    ],
+    icon: "📋",
+    note: "Dejas de recibir datos desordenados y empiezas a tener información útil.",
+    img: { metaData: cover1, loading: "eager" },
+  },
+  {
+    title: "Hojas de cálculo que trabajan por ti",
+    description: "Transformo tus hojas en herramientas inteligentes:",
+    enum: [
+      "Cálculos automáticos (totales, costos, métricas)",
+      "Reportes por día, semana o mes",
+      "Información centralizada y actualizada",
+    ],
+    icon: "📊",
+    note: "Tu Excel deja de ser un caos y pasa a ser un sistema.",
+    img: { metaData: cover2, loading: "lazy" },
+  },
+  {
+    title: "Automatización de tareas y notificaciones",
+    description: "Configuro procesos automáticos que se ejecutan solos:",
+    enum: [
+      "Envío de correos automáticos",
+      "Generación de reportes",
+      "Creación de documentos en masa",
+      "Alertas cuando algo importante sucede",
+    ],
+    icon: "🔔",
+    note: "Menos tareas manuales, menos errores, más control.",
+    img: { metaData: cover3, loading: "lazy" },
+  },
+];
+const pipelines = [
+  {
+    title: "Entiendo tu proceso actual",
+    description:
+      "Analizo cómo trabajas hoy, qué herramientas usas y qué te gustaría mejorar.",
+    icon: "🔍",
+  },
+  {
+    title: "Detecto tareas repetitivas o cuellos de botella",
+    description:
+      "Identifico las tareas que se repiten y los puntos donde se generan retrasos para optimizar tu flujo de trabajo.",
+    icon: "🕵🏻‍♀️",
+  },
+  {
+    title: "Diseño una solución simple (sin sobrecomplicar)",
+    description:
+      "Creo un plan detallado de la solución digital que mejor se adapte a tus necesidades.",
+    icon: "👩🏻‍💻",
+  },
+  {
+    title: "Implemento y dejo todo funcionando",
+    description:
+      "Desarrollo la solución, la pruebo y te la entrego lista para usar, con toda la documentación necesaria.",
+    icon: "🔧",
+  },
+  {
+    title: "Te explico cómo usarlo",
+    description:
+      "Te doy una capacitación clara y sencilla para que puedas aprovechar al máximo tu nueva herramienta digital.",
+    icon: "🎓",
+  },
+];
+---
+
+<Layout
+  title="Automatizaciones con Google Workspace"
+  description="Servicios de automatización con Google Workspace para optimizar tus procesos y ahorrar tiempo"
+>
+  <main
+    class="relative flex flex-col max-w-6xl mx-auto w-full px-8 md:px-10 lg:px-8 py-12"
+  >
+    <h1
+      class="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-accent-400"
+    >
+      Automatizaciones con Google Workspace
+    </h1>
+    <p class="text-lg lg:text-xl">
+      Automatizo tareas repetitivas usando herramientas que ya conoces:
+      formularios, hojas de cálculo y correos.
+      <br />
+      Sin cambiar tu forma de trabajar. Solo hacerla más eficiente.
+    </p>
+
+    <WhatIDo whatIDo={whatIDo} />
+    <HowIWork pipelines={pipelines} />
+    <CTA
+      title="¿Tienes tareas que haces todos los días?"
+      description="Muéstramelas y te digo cuáles puedes automatizar en poco tiempo, sin necesidad de desarrollar un sistema completo."
+      accentButton={{
+        label: "Ver mi caso",
+        href: "https://wa.me/5493435263931",
+      }}
+      defaultButton={{
+        label: "Solicitar automatización",
+        href: "/contacto",
+      }}
+      note="Ideal si hoy trabajas con Google Forms, Sheets o procesos manuales."
+    />
+  </main>
+</Layout>

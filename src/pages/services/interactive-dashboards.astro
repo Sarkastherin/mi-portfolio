@@ -1,0 +1,71 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import WhatIDo from "./globals/WhatIDo.astro";
+import HowIWork from "./globals/HowIWork.astro";
+import CTA from "./globals/CTA.astro";
+import cover1 from "../../assets/services/cover-dashboard.png";
+import cover2 from "../../assets/services/cover-kpi.jpg";
+import cover3 from "../../assets/services/cover-process.png";
+import type { ImageMetadata } from "astro";
+const whatIDo: {
+  title: string;
+  description: string;
+  enum: string[];
+  icon: string;
+  note: string;
+  img: { metaData: ImageMetadata; loading: "eager" | "lazy" };
+}[] = [
+  {
+    title: "Paneles que muestran lo importante",
+    description: "Diseño dashboards donde ves lo clave en segundos:",
+    enum: [
+      "Ventas, costos o métricas principales en un solo lugar",
+      "Información siempre actualizada",
+      "Visualización clara, sin ruido",
+    ],
+    icon: "📊",
+    note: "Dejas de buscar datos y empiezas a entenderlos.",
+    img: { metaData: cover1, loading: "eager" },
+  },
+  {
+    title: "Indicadores (KPI) por período",
+    description: "Organizo tus datos para que puedas analizar evolución real:",
+    enum: [
+      "Resultados por día, semana o mes",
+      "Comparaciones entre períodos",
+      "Seguimiento de objetivos",
+    ],
+    icon: "📅",
+    note: "Sabes si estás creciendo… o dónde estás perdiendo dinero.",
+    img: { metaData: cover2, loading: "eager" },
+  },
+ 
+];
+---
+
+<Layout
+  title="Gráficos e Indicadores Interactivos"
+  description="Visualizá lo importante con paneles automáticos y claros. Indicadores en tiempo real y análisis de datos con Google Sheets y otras herramientas."
+>
+  <main
+    class="relative flex flex-col max-w-6xl mx-auto w-full px-8 md:px-10 lg:px-8 py-12"
+  >
+    <h1
+      class="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-accent-400"
+    >
+      Gráficos e Indicadores Interactivos
+    </h1>
+    <p class="text-lg lg:text-xl">
+      Visualizá lo importante con paneles automáticos y claros. Indicadores en tiempo real y análisis de datos con Google Sheets y otras herramientas.
+
+    </p>
+    <WhatIDo whatIDo={whatIDo} />
+    <CTA
+    title="¿Te cuesta entender tus números?"
+      description="Muéstrame cómo llevas tus datos y te propongo un panel claro para ver lo importante sin perder tiempo."
+      accentButton={{ label: "Ver mis datos", href: "https://wa.me/5493435263931" }}
+      defaultButton={{ label: "Solicitar dashboard", href: "/contacto" }}
+      note="Ideal si hoy tienes datos pero no los estás aprovechando."
+    />
+  </main>
+</Layout>
