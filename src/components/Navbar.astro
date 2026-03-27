@@ -1,20 +1,44 @@
 ---
 import Image from "astro/components/Image.astro"
 import logo from "../assets/logo.png"
+import { Icon } from "astro-icon/components"
+
+let isOpen = false;
+function toggleMenu() {
+  isOpen = !isOpen;
+  const menu = document.getElementById("navbar-menu");
+  if (menu) {
+    menu.classList.toggle("hidden", !isOpen);
+  }
+}
 ---
 <header class="text-primary-50 py-2 shadow-lg fixed w-full z-50 bg-primary-900/30 backdrop-blur-sm border-b border-primary-800">
   <div class="flex justify-between items-center max-w-6xl mx-auto w-full px-6 lg:px-8">
     <a href="/" class="flex items-center gap-2 ">
-      <Image src={logo} alt="Logo" class="w-15" loading="eager" />
+      <Image src={logo} alt="Logo" class="w-12 lg:w-15" loading="eager" />
     </a>
+    
     <nav>
-      <ul class="flex justify-center items-center font-bold space-x-4">
-        <li><a href="/" class="hover:text-accent-400">Inicio</a></li>
-        <li><a href="/#about" class="hover:text-accent-400">Acerca de</a></li>
-        <li><a href="/#services" class="hover:text-accent-400">Servicios</a></li>
-        <li><a href="/#portfolio" class="hover:text-accent-400">Portfolio</a></li>
-        <li><a href="/#contact" class="hover:text-accent-400">Contacto</a></li>
+      <ul id="navbar-menu" class="flex-col lg:flex-row lg:flex font-bold space-y-4 lg:space-y-0 lg:space-x-4 absolute lg:static top-16 left-0 w-full lg:w-auto bg-primary-900/95 lg:bg-transparent px-6 lg:px-0 py-4 lg:py-0 shadow-lg lg:shadow-none hidden">
+        <li><a href="/" class="hover:text-accent-400 block py-2 lg:inline">Inicio</a></li>
+        <li><a href="/#about" class="hover:text-accent-400 block py-2 lg:inline">Acerca de</a></li>
+        <li><a href="/#services" class="hover:text-accent-400 block py-2 lg:inline">Servicios</a></li>
+        <li><a href="/#portfolio" class="hover:text-accent-400 block py-2 lg:inline">Portfolio</a></li>
+        <li><a href="/#contact" class="hover:text-accent-400 block py-2 lg:inline">Contacto</a></li>
       </ul>
     </nav>
+    <div class="lg:hidden flex items-center">
+      <button aria-label="Abrir menú" class="p-2" onclick="toggleMenu()">
+        <Icon name="lucide:menu" class="w-8 h-8 text-accent-400" />
+      </button>
+    </div>
+    <script is:inline>
+      window.toggleMenu = function() {
+        const menu = document.getElementById("navbar-menu");
+        if (menu) {
+          menu.classList.toggle("hidden");
+        }
+      }
+    </script>
   </div>
 </header>
