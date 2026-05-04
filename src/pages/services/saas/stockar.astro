@@ -1,0 +1,372 @@
+---
+import "../../../styles/global.css";
+import { Icon } from "astro-icon/components";
+export const problemas = [
+  {
+    title: "Stock poco confiable",
+    description:
+      "No tienes certeza de que las cantidades registradas coincidan con la realidad del depósito.",
+    icon: "lucide:alert-triangle",
+  },
+  {
+    title: "Faltantes y sobrantes",
+    description:
+      "Aparecen diferencias de stock sin explicación clara, generando pérdidas o sobrecompras.",
+    icon: "lucide:scale",
+  },
+  {
+    title: "Sin trazabilidad",
+    description:
+      "No sabes quién hizo un movimiento, cuándo ocurrió o por qué se realizó.",
+    icon: "lucide:eye-off",
+  },
+  {
+    title: "Dependencia de una persona",
+    description:
+      "El control del stock depende de alguien específico o de planillas difíciles de mantener.",
+    icon: "lucide:user",
+  },
+  {
+    title: "Tiempo perdido en el depósito",
+    description:
+      "Tu equipo pierde tiempo buscando productos o verificando información manualmente.",
+    icon: "lucide:clock",
+  },
+];
+export const soluciones = [
+  {
+    title: "Implementación simple",
+    description:
+      "Sistema listo para usar sin procesos complejos ni fricción para el equipo.",
+    icon: "lucide:settings",
+  },
+  {
+    title: "Adaptado a tu operación",
+    description:
+      "No cambias tu forma de trabajar, el sistema se ajusta a tu realidad.",
+    icon: "lucide:sliders-horizontal",
+  },
+  {
+    title: "Control total del stock",
+    description: "Sabes exactamente qué tienes, dónde está y quién lo movió.",
+    icon: "lucide:eye",
+  },
+  {
+    title: "Acceso desde cualquier lugar",
+    description: "Consulta y registra movimientos desde computadora o móvil.",
+    icon: "lucide:smartphone",
+  },
+  {
+    title: "Capacitación incluida",
+    description:
+      "Tu equipo aprende a usarlo correctamente desde el primer día.",
+    icon: "lucide:graduation-cap",
+  },
+];
+const proceso = [
+  {
+    title: "Analisis",
+    description: "Analizo cómo manejan el stock actualmente",
+  },
+  {
+    title: "Diagnóstico",
+    description: "Detecto errores y oportunidades de mejora",
+  },
+  {
+    title: "Implementación",
+    description: "Implemento el sistema adaptado a su operación",
+  },
+  {
+    title: "Capacitación",
+    description: "Capacito al equipo para uso real",
+  },
+  {
+    title: "Acompañamiento",
+    description: "Acompaño en el día a día hasta que funcione sin fricción",
+  },
+];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>StockAR - Gestión de Inventarios</title>
+  </head>
+  <body>
+    <section class="bg-gray-900 lg:grid lg:h-screen lg:place-content-center">
+      <div
+        class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32"
+      >
+        <div class="mx-auto max-w-prose text-center">
+          <h1 class="font-bold text-white text-5xl md:text-6xl">
+            Tu stock,
+            <br />
+            <strong class="text-indigo-400">bajo control real. </strong>
+            <br />
+            Sin Excel. Sin Caos.
+          </h1>
+
+          <p
+            class="mt-4 text-base text-pretty text-gray-200 sm:text-lg/relaxed"
+          >
+            Implemento un sistema simple y adaptado a tu empresa para que sepas
+            exactamente qué tienes, dónde está y quién lo movió.
+          </p>
+
+          <div class="mt-4 flex justify-center gap-4 sm:mt-6">
+            <a
+              class="inline-block rounded border border-indigo-500 bg-indigo-500 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-indigo-500"
+              href="https://wa.me/5493435263931?text=Hola,%20quiero%20solicitar%20un%20diagnóstico%20gratuito%20para%20mi%20empresa."
+              target="_blank"
+            >
+              Solicitar diagnóstico gratuito
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-gray-100">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 space-y-10">
+        <h2 class="text-3xl font-bold text-gray-800 sm:text-4xl">
+          ¿Te suena familiar?
+        </h2>
+        <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <div class="flex flex-wrap justify-center gap-8">
+            {
+              problemas.map((item) => (
+                <div class="rounded-lg border border-gray-300 p-6 md:w-80 w-72">
+                  <div class="inline-flex rounded-lg bg-red-100 p-3 text-red-600">
+                    <Icon name={item.icon} class="size-6" />
+                  </div>
+
+                  <h3 class="mt-4 text-lg font-semibold text-gray-900">
+                    {item.title}
+                  </h3>
+                  <p class="mt-2 text-pretty text-gray-700">
+                    {item.description}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 space-y-10">
+        <h2 class="text-3xl font-bold text-gray-800 sm:text-4xl">
+          Como te ayudo a resolverlo
+        </h2>
+        <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <div class="flex flex-wrap justify-center gap-8">
+            {
+              soluciones.map((item) => (
+                <div class="rounded-lg border border-gray-300 p-6 md:w-80 w-72">
+                  <div class="inline-flex rounded-lg bg-green-100 p-3 text-green-600">
+                    <Icon name={item.icon} class="size-6" />
+                  </div>
+
+                  <h3 class="mt-4 text-lg font-semibold text-gray-900">
+                    {item.title}
+                  </h3>
+                  <p class="mt-2 text-pretty text-gray-700">
+                    {item.description}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
+          <h3 class="text-2xl font-semibold text-gray-800 text-center">
+            Así trabajamos juntos
+          </h3>
+          <ul
+            class="flex flex-col gap-12 border border-gray-200 px-6 py-10 rounded-2xl w-fit mx-auto"
+          >
+            {
+              proceso.map((item, index) => (
+                <li class="flex items-start gap-4">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500 text-white">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h4 class="text-lg font-medium text-gray-900">
+                      {item.title}
+                    </h4>
+                    <p class="mt-1 text-pretty text-gray-700">
+                      {item.description}
+                    </p>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="bg-gray-100">
+      <div class="mx-auto max-w-6xl px-4 py-20 space-y-12">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+            No es un sistema genérico
+          </h2>
+          <p class="mt-4 text-gray-600">
+            No necesitas más funciones. Necesitas control real.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- LO MALO -->
+          <div class="rounded-xl border border-gray-200 bg-white p-6">
+            <h3 class="text-lg font-semibold text-gray-500 mb-4">
+              Sistemas tradicionales
+            </h3>
+
+            <ul class="space-y-3 text-sm text-gray-600">
+              <li>❌ Funciones que nunca usas</li>
+              <li>❌ Implementación compleja</li>
+              <li>❌ Soporte lento o inexistente</li>
+              <li>❌ Tienes que adaptarte al sistema</li>
+            </ul>
+          </div>
+
+          <!-- LO TUYO -->
+          <div class="rounded-xl border border-indigo-200 bg-indigo-50 p-6">
+            <h3 class="text-lg font-semibold text-indigo-700 mb-4">
+              Con este servicio
+            </h3>
+
+            <ul class="space-y-3 text-sm text-gray-700">
+              <li>✔ Solo lo que necesitas</li>
+              <li>✔ Implementación rápida y simple</li>
+              <li>✔ Soporte directo y cercano</li>
+              <li>✔ El sistema se adapta a tu operación</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-white">
+      <div class="mx-auto max-w-5xl px-4 py-20 space-y-12">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+            Mejoras en camino
+          </h2>
+          <p class="mt-4 text-gray-700">
+            El sistema evoluciona constantemente en base a necesidades reales de
+            operación.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6">
+          <div
+            class="rounded-lg bg-indigo-50 border border-indigo-200 px-5 py-4 text-sm text-indigo-700 w-72"
+          >
+          <Icon name="lucide:barcode" class="size-5 inline-block mr-2" />
+            Lectores de código de barras
+          </div>
+
+          <div
+            class="rounded-lg bg-indigo-50 border border-indigo-200 px-5 py-4 text-sm text-indigo-700 w-72"
+          >
+          <Icon name="lucide:alert-circle" class="size-5 inline-block mr-2" />
+            Alertas de stock bajo
+          </div>
+
+          <div
+            class="rounded-lg bg-indigo-50 border border-indigo-200 px-5 py-4 text-sm text-indigo-700 w-72"
+          >
+          <Icon name="lucide:file-text" class="size-5 inline-block mr-2" />
+            Importación desde Excel
+          </div>
+        </div>
+
+        <p class="text-center text-sm text-gray-500">
+          ¿Necesitas algo específico? Se puede adaptar según tu operación.
+        </p>
+      </div>
+    </section>
+    <section class="bg-gray-900">
+      <div class="mx-auto max-w-4xl px-4 py-20 text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">
+          Si hoy no tienes control real del stock,
+          <span class="text-indigo-400">
+            lo estás pagando sin darte cuenta.</span
+          >
+        </h2>
+
+        <p class="mt-4 text-gray-300">
+          En una breve revisión puedo mostrarte dónde están los problemas y cómo
+          resolverlos.
+        </p>
+
+        <div class="mt-8 flex justify-center">
+          <a
+            href="https://wa.me/5493435263931?text=Hola,%20quiero%20solicitar%20un%20diagnóstico%20gratuito%20para%20mi%20empresa."
+            target="_blank"
+            class="inline-block rounded-lg bg-indigo-500 px-6 py-3 font-medium text-white shadow-sm transition hover:bg-indigo-600"
+          >
+            Solicitar diagnóstico gratuito
+          </a>
+        </div>
+
+        <p class="mt-4 text-sm text-gray-400">
+          Respuesta en menos de 24h · Sin compromiso
+        </p>
+      </div>
+    </section>
+    <footer class="bg-gray-950">
+  <div class="mx-auto max-w-6xl px-4 py-12 text-center space-y-6">
+
+    <h3 class="text-lg font-semibold text-white">
+      StockAR
+    </h3>
+
+    <p class="text-sm text-gray-400">
+      Implementación simple de control de stock para PyMEs
+    </p>
+
+    <div class="flex justify-center gap-6 text-sm">
+      <a
+        href="https://wa.me/5493435263931"
+        target="_blank"
+        class="text-indigo-400 hover:text-indigo-300 transition"
+      >
+        WhatsApp
+      </a>
+
+      <a
+        href="mailto:kathejudit@gmail.com"
+        class="text-gray-400 hover:text-white transition"
+      >
+        Email
+      </a>
+
+      <a
+        href="https://kathe-systems.netlify.app/"
+        target="_blank"
+        class="text-gray-400 hover:text-white transition"
+      >
+        Web
+      </a>
+    </div>
+
+    <p class="text-xs text-gray-500">
+      © {new Date().getFullYear()} Katherin Guerrero · Argentina
+    </p>
+
+  </div>
+</footer>
+  </body>
+</html>

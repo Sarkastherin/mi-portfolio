@@ -1,0 +1,93 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import CTA from "../../../components/Services/CTA.astro";
+import Image from "astro/components/Image.astro";
+import Link from "../../../components/Generals/Link.astro";
+import image_saas_1 from "../../../assets/services/saas/stockar-logo.png";
+const saas = [
+  {
+    title: "StockAR - Gestión de Stock en Tiempo Real",
+    description:
+      "Sistema de control de stock implementado y adaptado a tu operación. Permite trazabilidad real de movimientos, usuarios y ubicaciones, sin depender de Excel ni procesos manuales.",
+    alt: "Software de gestión de stock",
+    url_image: image_saas_1,
+    href: "/services/saas/stockar",
+  },
+];
+---
+
+<Layout
+  title="Soluciones listas para implementar en tu operación"
+  description="Además de desarrollos a medida, creo y mantengo productos propios listos para usar, pensados para resolver necesidades reales de empresas y equipos. Descubrí mis soluciones SaaS."
+>
+  <main
+    class="relative flex flex-col max-w-6xl mx-auto w-full px-8 md:px-10 lg:px-8 py-12"
+  >
+    <div class="h-full" style={{ minHeight: "calc(100vh - 110px)" }}>
+      <h1
+        class="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-accent-400"
+      >
+        Soluciones listas para implementar en tu operación
+      </h1>
+      <p class="text-lg lg:text-xl">
+        No se trata de sumar otro software a tu empresa, sino de resolver
+        problemas reales de operación.
+      </p>
+
+      <p class="mt-4 text-lg lg:text-xl">
+        Estas son herramientas que ya están listas, pero que implemento y adapto
+        a tu forma de trabajar. Cada solución está pensada para usarse en el día
+        a día, con acompañamiento para que realmente funcione.
+      </p>
+
+      <div class="flex flex-col space-y-10 mt-20">
+        {
+          saas.map((s) => (
+            <div class="flex flex-col md:flex-row border border-primary-800 bg-primary-900/30 rounded-2xl shadow-lg">
+              <div class="flex-1 overflow-hidden rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none">
+                <Image
+                  src={s.url_image}
+                  alt={s.alt}
+                  class="flex justify-center items-center w-full h-full object-cover object-center"
+                />
+              </div>
+              <div class="flex flex-col justify-between flex-1 lg:flex-2 p-5">
+                <div class="space-y-4">
+                  <p class="text-sm text-primary-400 font-medium">
+                    Para empresas con descontrol de stock
+                  </p>
+                  <h4 class="text-xl font-semibold text-primary-300">
+                    {s.title}
+                  </h4>
+
+                  <p class="text-base lg:text-lg">{s.description}</p>
+
+                  <p class="text-sm text-gray-400">
+                    Implementado y adaptado a tu operación, con acompañamiento
+                    para que funcione en el día a día.
+                  </p>
+                </div>
+                <Link
+                  label="Ver solución completa"
+                  href={s.href}
+                  size="text-sm lg:text-base"
+                  className="self-end mt-4"
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <CTA
+      title="¿Querés digitalizar tu operación?"
+      description="Contame cómo trabaja tu equipo y te muestro cómo alguna de mis soluciones SaaS puede ayudarte a mejorar procesos y ahorrar tiempo."
+      accentButton={{
+        label: "Consultar por una solución",
+        href: "https://wa.me/5493435263931",
+      }}
+      note="Primer asesoría sin costo."
+    />
+  </main>
+</Layout>
